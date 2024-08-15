@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace TheMovies
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,6 +19,25 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            lbl1.IsEnabled = true;
+
+            //listview.Items.Add(txt.Text);
+
+
+
+
+            txt.Clear();
+            txt1.Clear();
+            txt2.Clear();
         }
     }
 }
