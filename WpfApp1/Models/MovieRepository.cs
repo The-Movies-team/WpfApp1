@@ -1,54 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfApp1.ViewModels;
 
 namespace WpfApp1.Models
 {
     class MovieRepository
     {
-        public string Title { get; set; }
-        public int Duration { get; set; }
-        public string Genre { get; set; }
-
-        //ObservableCollection<List> Movies { get; set; }
-
-        public void savetofile()
+        
+        public void savetofile(ObservableCollection<Movie> movies)
         {
             using StreamWriter sw = new StreamWriter("movies.csv");
 
-            //foreach (var movie in Movies)
-            //{
-                //List<string> columns = line.Split(',').ToList();
-                //sw.WriteLine($"{movie.Title},{movie.Duration},{movie.Genre}");
-            //}
-            
+            sw.WriteLine("Title;Duration;Genre");
+
+            foreach (var movie in movies)
+            {
+                
+                sw.WriteLine($"{movie.Title};{movie.Duration};{movie.Genre}");
+            }
 
 
         }
 
-        public void ReadFromFile()
+        public void ReadFromFile(ObservableCollection<Movie> movies)
         {
+            if (!File.Exists("movies.csv"))
+            {
+                File.Create("movies.csv");
+            }
+
             using StreamReader sr = new StreamReader("movies.csv");
 
             string line;
             while ((line = sr.ReadLine()) != null)
             {
-                List<string> columns = line.Split(',').ToList();
-                //Movies.Add(new Movie { Title = columns[0], Duration = columns[1], Genre = columns[2] });
+                var columns = line.Split(';');
+
+                if (int.TryParse(columns[1], out int duration))
+                {
+                    movies.Add(new Movie
+                    {
+                        Title = columns[0],
+                        Duration = duration,
+                        Genre = columns[2]
+                    });
+                }
+
+
             }
         }
-
-
-
-
-
-        public void AddMovie(string title, string duration, string genre)
-        {
-            //Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
-        }
-
     }
 }

@@ -19,6 +19,7 @@ namespace WpfApp1.ViewModels
         private string title;
         private int duration;
         private string genre;
+        private MovieRepository movieRepository = new MovieRepository();
 
         public ObservableCollection<Movie> Movies { get; set; }
 
@@ -30,12 +31,14 @@ namespace WpfApp1.ViewModels
         {
             Movies = new();
             AddMovieCommand = new RelayCommand(AddMovie);
-            //læsfilen hver gang den starter op, sæt observable til 
+            movieRepository.ReadFromFile(Movies);
+            //læscsv hver gang den starter op, sæt observable til at være lig med listen
         }
 
         private void AddMovie(object obj)
         {
             Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
+            movieRepository.savetofile(Movies);
         }
 
         public string Title
