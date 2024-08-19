@@ -1,14 +1,12 @@
-﻿
-using WpfApp1.MVVM;
+﻿using WpfApp1.MVVM;
 using System.Collections.ObjectModel;
-using WpfApp1.View;
 
-namespace MVVM_the_MOvies.View
+namespace WpfApp1.View
 {
-    internal partial class MAinWindowViewMOdel : ViewModelBase
+    internal partial class MAinWindowViewModel : ViewModelBase
     {
         public ObservableCollection<Item> Items { get; set; }
-        public MAinWindowViewMOdel()
+        public MAinWindowViewModel()
         {
             Items = new ObservableCollection<Item>();
             Items.Add(new Item
