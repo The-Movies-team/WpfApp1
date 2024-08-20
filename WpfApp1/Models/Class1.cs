@@ -1,10 +1,10 @@
-﻿namespace WpfApp1.Models
+﻿namespace WpfApp1.Model
 {
     internal class Class1
     {
-        public string Film { get; set; }
+        public required string Film { get; set; }
         public int Genre { get; set; }
-        public string Varighed { get; set; }
+        public required string Varighed { get; set; }
 
 
     }

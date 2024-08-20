@@ -22,7 +22,8 @@
                     ItemsSource="{Binding Items}" 
                     SelectedItem="{Binding SelectedItem}"
                     CanUserAddRows="False" CanUserDeleteRows="False"
-                AutoGenerateColumns="False">
+                    AutoGenerateColumns="False">
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Film" Binding="{Binding Film}" Width="4*"/>
                     <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Width="4*"/>
@@ -31,13 +32,14 @@
             </DataGrid>
 
             <StackPanel Grid.Column="1">
-                <Label Content="Titel"/>
-                <TextBox Margin="5,0,5,15" TextChanged="TextBox_TextChanged" />
+                <Label Content="Film"/>
+                <TextBox Margin="5,0,5,15" Text="{Binding SelectedItem.Film, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged" />
                 <Label Content="Genre" />
                 <TextBox Margin="5,0,5,15" Text="{Binding SelectedItem.Genre, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Varighed"/>
-                <TextBox Margin="5,0,5,15" Text="hello&#xD;&#xA;" />
+                <TextBox Margin="5,0,5,15" Text="{Binding SelectedItem.Varighed, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </Grid>
     </Grid>
 </Window>
+
