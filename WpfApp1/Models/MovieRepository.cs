@@ -14,6 +14,7 @@ namespace WpfApp1.Models
         
         public void savetofile(ObservableCollection<Movie> movies)
         {
+            
             using StreamWriter sw = new StreamWriter("movies.csv");
 
             sw.WriteLine("Title;Duration;Genre");

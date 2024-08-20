@@ -39,6 +39,7 @@ namespace WpfApp1.ViewModels
         {
             Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
             movieRepository.savetofile(Movies);
+            
         }
 
         public string Title
