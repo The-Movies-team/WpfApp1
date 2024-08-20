@@ -9,9 +9,14 @@ using WpfApp1.ViewModels;
 
 namespace WpfApp1.Models
 {
-    class MovieRepository
+    public class MovieRepository
     {
-        
+        private readonly string filePath;
+
+        public MovieRepository(string filePath = "movies.csv")
+        {
+            this.filePath = filePath;
+        }
         public void savetofile(ObservableCollection<Movie> movies)
         {
             
