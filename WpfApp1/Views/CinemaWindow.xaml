@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp1.Views.CinemaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        mc:Ignorable="d"
+        Title="CinemaWindow" Height="450" Width="800">
+    <Grid Background="#FF00175D">
+
+        <ListView x:Name="lvMovies" ItemsSource="{Binding Movies}" Margin="171,87,21,61">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="colTitle" Header="Titel" Width="100" DisplayMemberBinding="{Binding Title}" />
+
+                    <GridViewColumn x:Name="colDuration" Header="Varighed" Width="100" DisplayMemberBinding="{Binding Duration}" />
+
+                    <GridViewColumn x:Name="colGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding Genre}"  />
+
+                    <GridViewColumn x:Name="colPlaytime" Header="Spilletid" Width="100"  />
+
+                    <GridViewColumn x:Name="colInstructor" Header="Instruktør" Width="100"  />
+
+                    <GridViewColumn x:Name="colPremieredate" Header="Premieredato" Width="100" />
+
+                </GridView>
+
+
+            </ListView.View>
+        </ListView>
+
+        <ComboBox x:Name="cboPickCinema" HorizontalAlignment="Left" Margin="21,128,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboPickCity" HorizontalAlignment="Left" Margin="21,178,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="btnAddMovie" Content="Tilføj Film" HorizontalAlignment="Left" Margin="37,233,0,0" VerticalAlignment="Top" Height="36" Width="87"  RenderTransformOrigin="0.5,0.5" Background="#FF757579" FontWeight="Bold" Click="btnAdd_Click" >
+        </Button>
+
+
+
+        <Label Content="Biografprogram" HorizontalAlignment="Left" Margin="286,-5,0,0" VerticalAlignment="Top" Height="87" Width="378" FontSize="50" Foreground="Black"/>
+        <Label Content="Vælg Biograf" HorizontalAlignment="Left" Margin="21,99,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Vælg By" HorizontalAlignment="Left" Margin="21,155,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+
+    </Grid>
+</Window>
