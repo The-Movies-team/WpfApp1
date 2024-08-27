@@ -3,10 +3,53 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:local="clr-namespace:WpfApp1" 
+        xmlns:ViewModels="clr-namespace:WpfApp1.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    
+<Window.DataContext>
+ <ViewModels:MovieViewModel/>
+ </Window.DataContext>
+    
+    <Grid Background="#FF0D6D62">
+
+        <ListView x:Name="lvMovies" ItemsSource="{Binding Movies}" Margin="340,87,60,61">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="colTitle" Header="Titel" Width="130" DisplayMemberBinding="{Binding Title}" />
+
+                    <GridViewColumn x:Name="colDuration" Header="Varighed" Width="130" DisplayMemberBinding="{Binding Duration}" />
+
+                    <GridViewColumn x:Name="colGenre" Header="Genre" Width="130" DisplayMemberBinding="{Binding Genre}" />
+                    
+                </GridView>
+
+
+            </ListView.View>
+        </ListView>
+
+        <TextBox x:Name="txtTitel" HorizontalAlignment="Left" Margin="133,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Title}" />
+
+        <TextBox x:Name="txtDuration" HorizontalAlignment="Left" Margin="133,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Duration}"/>
+
+        <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Margin="133,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Genre}"/>
+
+        <Button x:Name="btnGem" Content="GEM" HorizontalAlignment="Left" Margin="184,268,0,0" VerticalAlignment="Top" Height="50" Width="101" Command="{Binding AddMovieCommand}" Click="btnGem_Click" />
+
+
+
+
+
+
+
+
+        <Label x:Name="lblgemt" Content="Filmen er gemt!" HorizontalAlignment="Left" Margin="61,280,0,0" VerticalAlignment="Top" Width="92" Opacity="0"/>
+        <Label Content="Film" HorizontalAlignment="Left" Margin="524,56,0,0" VerticalAlignment="Top"/>
+        <Label Content="Indtast Film" HorizontalAlignment="Left" Margin="96,56,0,0" VerticalAlignment="Top"/>
+        <Label Content="Titel" HorizontalAlignment="Left" Margin="27,118,0,0" VerticalAlignment="Top"/>
+        <Label Content="Varighed i minutter" HorizontalAlignment="Left" Margin="16,165,0,0" VerticalAlignment="Top"/>
+        <Label Content="Genre" HorizontalAlignment="Left" Margin="27,209,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

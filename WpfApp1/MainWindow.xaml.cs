@@ -16,9 +16,17 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();          
+
+
+        }
+
+        private void btnGem_Click(object sender, RoutedEventArgs e)
+        {
+            lblgemt.Opacity = 100;
         }
     }
 }
