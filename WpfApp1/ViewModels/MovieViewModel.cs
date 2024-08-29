@@ -21,7 +21,7 @@ namespace WpfApp1.ViewModels
         private string genre;
         private MovieRepository movieRepository = new MovieRepository();
 
-        public ObservableCollection<Movie> Movies { get; set; }
+        public ObservableCollection<Movie> movies { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -29,16 +29,16 @@ namespace WpfApp1.ViewModels
 
         public MovieViewModel()
         {
-            Movies = new();
+            movies = new();
             AddMovieCommand = new RelayCommand(AddMovie);
-            movieRepository.ReadFromFile(Movies);
-            //læscsv hver gang den starter op, sæt observable til at være lig med listen
+            movieRepository.ReadFromFile(movies);
+            
         }
 
         private void AddMovie(object obj)
         {
-            Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
-            movieRepository.savetofile(Movies);
+            movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
+            movieRepository.savetofile(movies);
             
         }
 

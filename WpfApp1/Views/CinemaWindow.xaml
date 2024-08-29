@@ -4,11 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views"
+        xmlns:ViewModels="clr-namespace:WpfApp1.ViewModels"
         mc:Ignorable="d"
         Title="CinemaWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <ViewModels:CinemaViewModel/>
+    </Window.DataContext>
+
     <Grid Background="#FF00175D">
 
-        <ListView x:Name="lvMovies" ItemsSource="{Binding Movies}" Margin="171,87,21,61">
+        <ListView x:Name="lvcinemas" ItemsSource="{Binding cinemas}" Margin="171,87,21,61">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="colTitle" Header="Titel" Width="100" DisplayMemberBinding="{Binding Title}" />
@@ -17,11 +23,11 @@
 
                     <GridViewColumn x:Name="colGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding Genre}"  />
 
-                    <GridViewColumn x:Name="colPlaytime" Header="Spilletid" Width="100"  />
+                    <GridViewColumn x:Name="colPlaytime" Header="Spilletid" Width="100" DisplayMemberBinding="{Binding Date}" />
 
-                    <GridViewColumn x:Name="colInstructor" Header="Instruktør" Width="100"  />
+                    <GridViewColumn x:Name="colInstructor" Header="Instruktør" Width="100" DisplayMemberBinding="{Binding Instructor}" />
 
-                    <GridViewColumn x:Name="colPremieredate" Header="Premieredato" Width="100" />
+                    <GridViewColumn x:Name="colPremieredate" Header="Premieredato" Width="100" DisplayMemberBinding="{Binding Premier}"/>
 
                 </GridView>
 
