@@ -32,7 +32,7 @@ namespace WpfApp1.Tests
             };
 
             // Act
-            movieRepository.savetofile(moviesToSave);
+            movieRepository.SaveToFile(moviesToSave);
 
             var moviesRead = new ObservableCollection<Movie>();
             movieRepository.ReadFromFile(moviesRead);
