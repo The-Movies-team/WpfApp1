@@ -23,7 +23,7 @@ namespace WpfApp1.ViewModels
         private MovieRepository movieRepository = new MovieRepository();
 
         
-        public ObservableCollection<Movie> Movies { get; set; }
+        public ObservableCollection<Movie> movies { get; set; }
 
         // Event til at håndtere property ændringer
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -34,16 +34,16 @@ namespace WpfApp1.ViewModels
         
         public MovieViewModel()
         {
-            Movies = new ObservableCollection<Movie>();
+            movies = new ObservableCollection<Movie>();
             AddMovieCommand = new RelayCommand(AddMovie);
-            movieRepository.ReadFromFile(Movies);
+            movieRepository.ReadFromFile(movies);
         }
 
         // Metode til at tilføje en ny film
         private void AddMovie(object obj)
         {
-            Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
-            movieRepository.SaveToFile(Movies);
+            movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
+            movieRepository.SaveToFile(movies);
         }
 
         // Properties med OnPropertyChanged kald

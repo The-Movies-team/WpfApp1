@@ -28,7 +28,7 @@ namespace WpfApp1.ViewModels
         private CinemaRepository cinemaRepository = new CinemaRepository();
 
         
-        public ObservableCollection<Cinema> Cinemas { get; set; }
+        public ObservableCollection<Cinema> cinemas { get; set; }
 
         // Event til at håndtere property ændringer
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -39,15 +39,15 @@ namespace WpfApp1.ViewModels
         
         public CinemaViewModel()
         {
-            Cinemas = new ObservableCollection<Cinema>();
+            cinemas = new ObservableCollection<Cinema>();
             AddCinemaCommand = new RelayCommand(AddCinema);
-            cinemaRepository.ReadFromFile(Cinemas);
+            cinemaRepository.ReadFromFile(cinemas);
         }
 
         // Metode til at tilføje en ny biograf
         public void AddCinema(object obj)
         {
-            Cinemas.Add(new Cinema
+            cinemas.Add(new Cinema
             {
                 Title = title,
                 Duration = duration,
@@ -58,7 +58,7 @@ namespace WpfApp1.ViewModels
                 Instructor = instructor,
                 Premier = premier
             });
-            cinemaRepository.SaveToFile(Cinemas);
+            cinemaRepository.SaveToFile(cinemas);
         }
 
         // Properties med OnPropertyChanged kald
