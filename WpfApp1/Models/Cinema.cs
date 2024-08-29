@@ -11,7 +11,7 @@ namespace WpfApp1.Models
     public class Cinema
     {
         public string Title { get; set; }
-        public int Duration { get; set; }
+        public string Duration { get; set; }
         public string Genre { get; set; }
 
         public string CinemaName { get; set; }

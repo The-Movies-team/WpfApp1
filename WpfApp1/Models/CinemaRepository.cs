@@ -13,56 +13,56 @@ namespace WpfApp1.Models
     {
         private readonly string filePath;
 
-        public CinemaRepository(string filePath = "Cinema.csv")
+        
+        public CinemaRepository(string filePath = "Uge33-TheMovies.csv")
         {
             this.filePath = filePath;
         }
-        public void savetofile(ObservableCollection<Cinema> cinemas)
+
+        // Metode til at gemme listen af biografer til en fil
+        public void SaveToFile(ObservableCollection<Cinema> cinemas)
         {
-
-            using StreamWriter sw = new StreamWriter("Cinema.csv");
-
-            sw.WriteLine("Title;Duration;Genre;CinemaName;City;Premier;Instructor;Date");
+            using StreamWriter sw = new StreamWriter(filePath);
+                       
 
             foreach (var cinema in cinemas)
             {
-
-                sw.WriteLine($"{cinema.Title};{cinema.Duration};{cinema.Genre};{cinema.CinemaName};{cinema.City};{cinema.Premier};{cinema.Instructor};{cinema.Date}");
+                sw.WriteLine($"{cinema.CinemaName};{cinema.City};{cinema.Date};{cinema.Title};{cinema.Genre};{cinema.Duration};{cinema.Instructor};{cinema.Premier}");
             }
-
-
         }
 
+        // Metode til at læse listen af biografer fra en fil
         public void ReadFromFile(ObservableCollection<Cinema> cinemas)
         {
-            if (!File.Exists("Cinema.csv"))
+            if (!File.Exists(filePath))
             {
-                File.Create("Cinema.csv");
+                // Opret filen, hvis den ikke eksisterer
+                File.Create(filePath);
+                return; 
             }
 
-            using StreamReader sr = new StreamReader("Cinema.csv");
-
+            using StreamReader sr = new StreamReader(filePath);
             string line;
+
+            // Spring header-linjen over
+            sr.ReadLine();
+
             while ((line = sr.ReadLine()) != null)
             {
                 var columns = line.Split(';');
 
-                if (int.TryParse(columns[1], out int duration))
+                // Tilføj et nyt Cinema-objekt til samlingen
+                cinemas.Add(new Cinema
                 {
-                    cinemas.Add(new Cinema
-                    {
-                        Title = columns[0],
-                        Duration = duration,
-                        Genre = columns[2],
-                        CinemaName = columns[3],
-                        City = columns[4],
-                        Premier = columns[5],
-                        Instructor = columns[6],
-                        Date = columns[7]
-                    });
-                }
-
-
+                    CinemaName = columns[0],
+                    City = columns[1],
+                    Date = columns[2],
+                    Title = columns[3],
+                    Genre = columns[4],
+                    Duration = columns[5],
+                    Instructor = columns[6],
+                    Premier = columns[7]
+                });
             }
         }
     }

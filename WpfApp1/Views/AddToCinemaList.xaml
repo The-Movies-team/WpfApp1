@@ -26,13 +26,13 @@
         <TextBox x:Name="txtGenre" HorizontalAlignment="Center" Margin="0,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Genre}"/>
 
         <Button x:Name="btnsavecinema" Content="Tilføj Film" HorizontalAlignment="Center" Margin="0,425,0,0" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click" Command="{Binding AddCinemaCommand}"/>
-        
+
         <Label x:Name="lbltitel" Content="Titel" HorizontalAlignment="Left" Margin="98,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
         <Label x:Name="lblCinema" Content="Biograf&#xD;&#xA;" HorizontalAlignment="Left" Margin="83,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
         <Label x:Name="lblCity" Content="By" HorizontalAlignment="Left" Margin="105,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
         <Label x:Name="lblGenre" Content="Genre" HorizontalAlignment="Left" Margin="93,200,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
-        <Label x:Name="lblDuration" Content="Varighed i minutter&#xD;&#xA; tilføjer automatisk &#xD;&#xA;30 min til&#xD;&#xA; reklamer og&#xD;&#xA; rengøring&#xA;" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White" Height="92" Width="118"/>
-        <Label x:Name="lblDate" Content="Spilletid d/m/å 00:00" HorizontalAlignment="Left" Margin="11,321,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
+        <Label x:Name="lblDuration" Content="Varighed i minutter&#xA; tilføjer automatisk &#xA;30 min til&#xA; reklamer og&#xA; rengøring: 00:00&#xA; " HorizontalAlignment="Left" Margin="11,231,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White" Height="91" Width="118"/>
+        <Label x:Name="lblDate" Content="Spilletid: å/m/d 00:00" HorizontalAlignment="Left" Margin="11,321,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
         <Label x:Name="lblinstructor" Content="Instruktør" HorizontalAlignment="Left" Margin="74,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
         <Label x:Name="lblpremier" Content="Premieredato" HorizontalAlignment="Left" Margin="54,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.098,0.374" Foreground="White"/>
 

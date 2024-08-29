@@ -26,7 +26,7 @@ namespace WpfApp1
 
         private void btnGem_Click(object sender, RoutedEventArgs e)
         {
-            lblgemt.Opacity = 100;
+            lblgemt.Opacity = 100; // Viser label
         }
     }
 }

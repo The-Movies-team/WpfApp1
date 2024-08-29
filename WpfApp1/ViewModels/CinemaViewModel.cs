@@ -12,90 +12,108 @@ using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    public class CinemaViewModel
+    public class CinemaViewModel : INotifyPropertyChanged
     {
+        // Private felter til binding
         private string title;
-        private int duration;
+        private string duration;
         private string genre;
         private string cinemaName;
         private string city;
         private string premier;
         private string instructor;
         private string date;
-        
 
+        
         private CinemaRepository cinemaRepository = new CinemaRepository();
 
-        public ObservableCollection<Cinema> cinemas { get; set; }
+        
+        public ObservableCollection<Cinema> Cinemas { get; set; }
 
+        // Event til at håndtere property ændringer
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        // Kommando til at tilføje en ny biograf
         public ICommand AddCinemaCommand { get; private set; }
 
+        
         public CinemaViewModel()
         {
-            cinemas = new();
+            Cinemas = new ObservableCollection<Cinema>();
             AddCinemaCommand = new RelayCommand(AddCinema);
-            cinemaRepository.ReadFromFile(cinemas);
-            
+            cinemaRepository.ReadFromFile(Cinemas);
         }
 
-        private void AddCinema(object obj)
+        // Metode til at tilføje en ny biograf
+        public void AddCinema(object obj)
         {
-            cinemas.Add(new Cinema { Title = title, Duration = duration, Genre = genre, CinemaName = cinemaName, City = city, Date = date, Instructor = instructor, Premier = premier  });
-            cinemaRepository.savetofile(cinemas);
-            
-
+            Cinemas.Add(new Cinema
+            {
+                Title = title,
+                Duration = duration,
+                Genre = genre,
+                CinemaName = cinemaName,
+                City = city,
+                Date = date,
+                Instructor = instructor,
+                Premier = premier
+            });
+            cinemaRepository.SaveToFile(Cinemas);
         }
 
+        // Properties med OnPropertyChanged kald
         public string Title
         {
             get { return title; }
-            set { title = value; OnPropertyChanged("Title"); }
+            set { title = value; OnPropertyChanged(); }
         }
 
-        public int Duration
+        public string Duration
         {
             get { return duration; }
-            set { duration = value; OnPropertyChanged("Duration"); }
-
-
+            set { duration = value; OnPropertyChanged(); }
         }
 
         public string Genre
         {
             get { return genre; }
-            set { genre = value; OnPropertyChanged("Genre"); }
+            set { genre = value; OnPropertyChanged(); }
         }
+
         public string CinemaName
         {
             get { return cinemaName; }
-            set { cinemaName = value; OnPropertyChanged("CinemaName"); }
+            set { cinemaName = value; OnPropertyChanged(); }
         }
+
         public string City
         {
             get { return city; }
-            set { city = value; OnPropertyChanged("City"); }
+            set { city = value; OnPropertyChanged(); }
         }
+
         public string Premier
         {
             get { return premier; }
-            set { premier = value; OnPropertyChanged("Premier"); }
+            set { premier = value; OnPropertyChanged(); }
         }
+
         public string Instructor
         {
             get { return instructor; }
-            set { instructor = value; OnPropertyChanged("Instructor"); }
+            set { instructor = value; OnPropertyChanged(); }
         }
+
         public string Date
         {
             get { return date; }
-            set { date = value; OnPropertyChanged("Date"); }
+            set { date = value; OnPropertyChanged(); }
         }
 
-        protected void OnPropertyChanged(string name)
+        // Metode til at håndtere property ændringer
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

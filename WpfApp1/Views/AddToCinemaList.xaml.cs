@@ -17,36 +17,24 @@ using WpfApp1.ViewModels;
 
 namespace WpfApp1.Views
 {
-    
     public partial class AddToCinemaList : Window
     {
-
         private CinemaViewModel viewModel;
-        CinemaRepository cinemaRepository = new CinemaRepository();
-        
-        
+        private CinemaRepository cinemaRepository = new CinemaRepository();
 
+        
         public AddToCinemaList(CinemaViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new CinemaViewModel();
             this.viewModel = viewModel;
             this.DataContext = viewModel;
-
-
         }
 
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            if (viewModel == null)
-            {
-                MessageBox.Show("ViewModel is not initialized.");
-                return;
-            }
             viewModel.Title = txtTitle.Text;
-            viewModel.Duration = Convert.ToInt32(txtDuration.Text);
+            viewModel.Duration = AddThirtyMinutes(txtDuration.Text);
             viewModel.Genre = txtGenre.Text;
             viewModel.CinemaName = txtCinema.Text;
             viewModel.City = txtCity.Text;
@@ -54,8 +42,18 @@ namespace WpfApp1.Views
             viewModel.Instructor = txtinstructor.Text;
             viewModel.Premier = txtPremier.Text;
 
-
             this.Close();
+        }
+
+        // Metode til at tilføje 30 minutter til varigheden
+        private string AddThirtyMinutes(string duration)
+        {
+            if (TimeSpan.TryParse(duration, out TimeSpan timeSpan))
+            {
+                timeSpan = timeSpan.Add(TimeSpan.FromMinutes(30));
+                return timeSpan.ToString(@"hh\:mm");
+            }
+            return duration; // Returner den oprindelige varighed, hvis parsing fejler
         }
     }
 }

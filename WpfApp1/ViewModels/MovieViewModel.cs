@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,58 +14,61 @@ namespace WpfApp1.ViewModels
 {
     public class MovieViewModel : INotifyPropertyChanged
     {
-
-        //måske slette 
-        //public Movie Movie { get; set; } kan leges med
+        // Private felter til binding
         private string title;
         private int duration;
         private string genre;
+
+        
         private MovieRepository movieRepository = new MovieRepository();
 
-        public ObservableCollection<Movie> movies { get; set; }
+        
+        public ObservableCollection<Movie> Movies { get; set; }
 
+        // Event til at håndtere property ændringer
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        // Kommando til at tilføje en ny film
         public ICommand AddMovieCommand { get; private set; }
 
+        
         public MovieViewModel()
         {
-            movies = new();
+            Movies = new ObservableCollection<Movie>();
             AddMovieCommand = new RelayCommand(AddMovie);
-            movieRepository.ReadFromFile(movies);
-            
+            movieRepository.ReadFromFile(Movies);
         }
 
+        // Metode til at tilføje en ny film
         private void AddMovie(object obj)
         {
-            movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
-            movieRepository.savetofile(movies);
-            
+            Movies.Add(new Movie { Title = title, Duration = duration, Genre = genre });
+            movieRepository.SaveToFile(Movies);
         }
 
+        // Properties med OnPropertyChanged kald
         public string Title
         {
             get { return title; }
-            set { title = value; OnPropertyChanged("Title"); }
+            set { title = value; OnPropertyChanged(); }
         }
 
         public int Duration
         {
             get { return duration; }
-            set { duration = value; OnPropertyChanged("Duration"); }
-
-
+            set { duration = value; OnPropertyChanged(); }
         }
 
         public string Genre
         {
             get { return genre; }
-            set { genre = value; OnPropertyChanged("Genre"); }
-        }
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            set { genre = value; OnPropertyChanged(); }
         }
 
+        // Metode til at håndtere property ændringer
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

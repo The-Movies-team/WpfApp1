@@ -6,28 +6,44 @@
         xmlns:local="clr-namespace:WpfApp1.Views"
         xmlns:ViewModels="clr-namespace:WpfApp1.ViewModels"
         mc:Ignorable="d"
-        Title="CinemaWindow" Height="450" Width="800">
+        Title="CinemaWindow" Height="950" Width="889">
 
     <Window.DataContext>
         <ViewModels:CinemaViewModel/>
     </Window.DataContext>
 
-    <Grid Background="#FF00175D">
+    <Grid Background="#FF00175D" Margin="0,0,-78,-16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="618*"/>
+            <ColumnDefinition Width="183*"/>
+        </Grid.ColumnDefinitions>
 
-        <ListView x:Name="lvcinemas" ItemsSource="{Binding cinemas}" Margin="171,87,21,61">
+        <ListView x:Name="lvcinemas" ItemsSource="{Binding cinemas}" Margin="0,87,0,109" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="colTitle" Header="Titel" Width="100" DisplayMemberBinding="{Binding Title}" />
+                    <GridViewColumn x:Name="colCinemaName" Header="Biograf" Width="100" DisplayMemberBinding="{Binding CinemaName}"  />
 
-                    <GridViewColumn x:Name="colDuration" Header="Varighed" Width="100" DisplayMemberBinding="{Binding Duration}" />
+                    <GridViewColumn x:Name="colCity" Header="By" Width="100" DisplayMemberBinding="{Binding City}"/>
 
-                    <GridViewColumn x:Name="colGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding Genre}"  />
+                    <GridViewColumn x:Name="colPlaytime" Header="Forestillingstidspunkt
+                " Width="150" DisplayMemberBinding="{Binding Date}" />
 
-                    <GridViewColumn x:Name="colPlaytime" Header="Spilletid" Width="100" DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn x:Name="colTitle" Header="FilmTitel" Width="100" DisplayMemberBinding="{Binding Title}" />
 
-                    <GridViewColumn x:Name="colInstructor" Header="Instruktør" Width="100" DisplayMemberBinding="{Binding Instructor}" />
+                    <GridViewColumn x:Name="colGenre" Header="FilmGenre" Width="100" DisplayMemberBinding="{Binding Genre}"  />
+
+                    <GridViewColumn x:Name="colDuration" Header="FilmVarighed" Width="100" DisplayMemberBinding="{Binding Duration}" />
+
+
+
+
+
+                    <GridViewColumn x:Name="colInstructor" Header="FilmInstruktør" Width="100" DisplayMemberBinding="{Binding Instructor}" />
 
                     <GridViewColumn x:Name="colPremieredate" Header="Premieredato" Width="100" DisplayMemberBinding="{Binding Premier}"/>
+
+
 
                 </GridView>
 
@@ -35,17 +51,14 @@
             </ListView.View>
         </ListView>
 
-        <ComboBox x:Name="cboPickCinema" HorizontalAlignment="Left" Margin="21,128,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cboPickCity" HorizontalAlignment="Left" Margin="21,178,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Button x:Name="btnAddMovie" Content="Tilføj Film" HorizontalAlignment="Left" Margin="37,233,0,0" VerticalAlignment="Top" Height="36" Width="87"  RenderTransformOrigin="0.5,0.5" Background="#FF757579" FontWeight="Bold" Click="btnAdd_Click" >
+
+        <Button x:Name="btnAddMovie" Content="Tilføj Film" HorizontalAlignment="Left" Margin="338,846,0,0" VerticalAlignment="Top" Height="36" Width="87"  RenderTransformOrigin="0.5,0.5" Background="#FF757579" FontWeight="Bold" Click="btnAdd_Click" Grid.Column="1" >
         </Button>
 
 
 
-        <Label Content="Biografprogram" HorizontalAlignment="Left" Margin="286,-5,0,0" VerticalAlignment="Top" Height="87" Width="378" FontSize="50" Foreground="Black"/>
-        <Label Content="Vælg Biograf" HorizontalAlignment="Left" Margin="21,99,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label Content="Vælg By" HorizontalAlignment="Left" Margin="21,155,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Biografprogram" HorizontalAlignment="Left" Margin="203,-5,0,0" VerticalAlignment="Top" Height="87" Width="378" FontSize="50" Foreground="Black" Grid.Column="1"/>
 
 
     </Grid>
