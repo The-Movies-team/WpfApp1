@@ -22,7 +22,7 @@ namespace WpfApp1.Models
             
             using StreamWriter sw = new StreamWriter("movies.csv");
 
-            sw.WriteLine("Title;Duration;Genre");
+            sw.WriteLine("Title;Duration;Filmgenre");
 
             foreach (var movie in movies)
             {

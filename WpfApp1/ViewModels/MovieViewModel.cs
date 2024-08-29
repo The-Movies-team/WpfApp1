@@ -59,7 +59,7 @@ namespace WpfApp1.ViewModels
         public string Genre
         {
             get { return genre; }
-            set { genre = value; OnPropertyChanged("Genre"); }
+            set { genre = value; OnPropertyChanged("Filmgenre"); }
         }
         protected void OnPropertyChanged(string name)
         {

@@ -45,14 +45,14 @@ namespace WpfApp1.Views
                 MessageBox.Show("ViewModel is not initialized.");
                 return;
             }
-            viewModel.Title = txtTitle.Text;
-            viewModel.Duration = Convert.ToInt32(txtDuration.Text);
-            viewModel.Genre = txtGenre.Text;
-            viewModel.CinemaName = txtCinema.Text;
-            viewModel.City = txtCity.Text;
-            viewModel.Date = txtDate.Text;
-            viewModel.Instructor = txtinstructor.Text;
-            viewModel.Premier = txtPremier.Text;
+            viewModel.Filmtitel = txtTitle.Text;
+            viewModel.Filmvarighed = Convert.ToInt32(txtDuration.Text);
+            viewModel.Filmgenre = txtGenre.Text;
+            viewModel.Biograf = txtCinema.Text;
+            viewModel.By = txtCity.Text;
+            viewModel.Forestillingstidspunkt = txtDate.Text;
+            viewModel.Filminstruktør = txtinstructor.Text;
+            viewModel.Premieredato = txtPremier.Text;
 
 
             this.Close();

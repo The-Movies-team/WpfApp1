@@ -10,18 +10,18 @@ namespace WpfApp1.Models
 {
     public class Cinema
     {
-        public string Title { get; set; }
-        public int Duration { get; set; }
-        public string Genre { get; set; }
+        public string Filmtitel { get; set; }
+        public int Filmvarighed { get; set; }
+        public string Filmgenre { get; set; }
 
-        public string CinemaName { get; set; }
-        public string City { get; set; }
+        public string Biograf { get; set; }
+        public string By { get; set; }
 
-        public string Date { get; set; }
+        public string Forestillingstidspunkt { get; set; }
 
-        public string Instructor { get; set; }
+        public string Filminstruktør { get; set; }
 
-        public string Premier { get; set; }
+        public string Premieredato { get; set; }
 
     }
 }

@@ -14,14 +14,14 @@ namespace WpfApp1.ViewModels
 {
     public class CinemaViewModel
     {
-        private string title;
-        private int duration;
-        private string genre;
-        private string cinemaName;
-        private string city;
-        private string premier;
-        private string instructor;
-        private string date;
+        private string filmtitel;
+        private int filmvarighed;
+        private string filmgenre;
+        private string biograf;
+        private string by;
+        private string premieredato;
+        private string filminstruktør;
+        private string forestillingstidspunkt;
         
 
         private CinemaRepository cinemaRepository = new CinemaRepository();
@@ -42,55 +42,55 @@ namespace WpfApp1.ViewModels
 
         private void AddCinema(object obj)
         {
-            cinemas.Add(new Cinema { Title = title, Duration = duration, Genre = genre, CinemaName = cinemaName, City = city, Date = date, Instructor = instructor, Premier = premier  });
+            cinemas.Add(new Cinema { Filmtitel = filmtitel, Filmvarighed = filmvarighed, Filmgenre = filmgenre, Biograf = biograf, By = by, Forestillingstidspunkt = forestillingstidspunkt, Filminstruktør = filminstruktør, Premieredato = premieredato  });
             cinemaRepository.savetofile(cinemas);
             
 
         }
 
-        public string Title
+        public string Filmtitel
         {
-            get { return title; }
-            set { title = value; OnPropertyChanged("Title"); }
+            get { return filmtitel; }
+            set { filmtitel = value; OnPropertyChanged("Filmtitel"); }
         }
 
-        public int Duration
+        public int Filmvarighed
         {
-            get { return duration; }
-            set { duration = value; OnPropertyChanged("Duration"); }
+            get { return filmvarighed; }
+            set { filmvarighed = value; OnPropertyChanged("Filmvarighed"); }
 
 
         }
 
-        public string Genre
+        public string Filmgenre
         {
-            get { return genre; }
-            set { genre = value; OnPropertyChanged("Genre"); }
+            get { return filmgenre; }
+            set { filmgenre = value; OnPropertyChanged("Filmgenre"); }
         }
-        public string CinemaName
+        public string Biograf
         {
-            get { return cinemaName; }
-            set { cinemaName = value; OnPropertyChanged("CinemaName"); }
+            get { return Biograf; }
+            set { biograf = value; OnPropertyChanged("Biograf"); }
         }
-        public string City
+        public string By
         {
-            get { return city; }
-            set { city = value; OnPropertyChanged("City"); }
+            get { return by; }
+            set { by = value; OnPropertyChanged("By"); }
         }
-        public string Premier
+        public string Premieredato
         {
-            get { return premier; }
-            set { premier = value; OnPropertyChanged("Premier"); }
+            get { return premieredato; }
+            set { premieredato = value; OnPropertyChanged("Premieredato"); }
         }
-        public string Instructor
+        public string Filminstruktør
         {
-            get { return instructor; }
-            set { instructor = value; OnPropertyChanged("Instructor"); }
+            get { return filminstruktør; }
+            set { filminstruktør = value; OnPropertyChanged("Filminstruktør"); }
         }
-        public string Date
+        public string Forestillingstidspunkt
         {
-            get { return date; }
-            set { date = value; OnPropertyChanged("Date"); }
+            get { return forestillingstidspunkt; }
+            set { forestillingstidspunkt = value; OnPropertyChanged("Forestillingstidspunkt"); }
         }
 
         protected void OnPropertyChanged(string name)
