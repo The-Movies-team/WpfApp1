@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WpfApp1.Commands;
+
 using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
